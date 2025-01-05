@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>tn.esprit</groupId>
 	<artifactId>AmalGhozziTPFoyer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>AmalGhozziTPFoyer</name>
 	<description>AmalGhozziTPFoyer</description>
 	<url/>
