@@ -8,12 +8,7 @@ services:
     networks:
       - app_network
 
-  frontend:
-    image: amiraelalem1/amiraelalem-devops:frontend-latest  # Remplacer avec ton image frontend
-    ports:
-      - "4201:80"  # Expose le port du frontend
-    networks:
-      - app_network
+  
 
   prometheus:
     image: prom/prometheus:latest
