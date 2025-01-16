@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    image: amiraelalem1/amiraelalem-devops:backend-latest  # Remplacer avec ton image backend
+    image: amiraelalem1/amiraelalem-devops:latest  # Remplacer avec ton image backend
     ports:
       - "8083:8080"  # Expose le port du backend
     networks:
