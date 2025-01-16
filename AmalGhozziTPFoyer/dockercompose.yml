@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  backend:
+    image: amiraelalem1/amiraelalem-devops:backend-latest  # Remplacer avec ton image backend
+    ports:
+      - "8083:8080"  # Expose le port du backend
+    networks:
+      - app_network
+
+  frontend:
+    image: amiraelalem1/amiraelalem-devops:frontend-latest  # Remplacer avec ton image frontend
+    ports:
+      - "4201:80"  # Expose le port du frontend
+    networks:
+      - app_network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"  # Expose le port Prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml  # Assurez-vous d'avoir le fichier prometheus.yml dans votre répertoire
+    networks:
+      - app_network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"  # Expose le port de Grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin  # Utilisateur admin de Grafana
+      - GF_SECURITY_ADMIN_PASSWORD=admin  # Mot de passe admin de Grafana
+    networks:
+      - app_network
+    depends_on:
+      - prometheus  # Grafana dépend de Prometheus
+
+networks:
+  app_network:
+    driver: bridge  # Crée un réseau bridge pour connecter les services
